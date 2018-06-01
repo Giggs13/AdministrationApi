@@ -24,8 +24,6 @@ public class ExceptionAdvice {
     private static final String METHOD_NOT_ALLOWED_ERROR = "METHOD_NOT_ALLOWED_ERROR";
     private static final String UNSUPPORTED_MEDIA_TYPE_ERROR = "UNSUPPORTED_MEDIA_TYPE_ERROR";
     private static final String INTERNAL_SERVER_ERROR = "INTERNAL_SERVER_ERROR";
-    @Autowired
-    private ResourceBundleMessageSource messageSource;
 
     @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseBody
@@ -65,10 +63,6 @@ public class ExceptionAdvice {
         logger.error("", ex);
         return new ResponseEntity<>(getErrorMessage(INTERNAL_SERVER_ERROR),
                 createResponseHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
-    private String getErrorMessage(String code) {
-        return messageSource.getMessage(code, null, Locale.getDefault());
     }
 
     private HttpHeaders createResponseHeaders() {
