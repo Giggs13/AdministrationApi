@@ -42,8 +42,8 @@ public class ExceptionAdvice {
                                                          HttpServletResponse response,
                                                          HttpRequestMethodNotSupportedException ex) {
         logger.error("", ex);
-        return new ResponseEntity<>(getErrorMessage(METHOD_NOT_ALLOWED_ERROR),
-                createResponseHeaders(), HttpStatus.METHOD_NOT_ALLOWED);
+        return new ResponseEntity<>(HttpStatus.METHOD_NOT_ALLOWED, createResponseHeaders(),
+                HttpStatus.METHOD_NOT_ALLOWED);
     }
 
     @ExceptionHandler(HttpMediaTypeException.class)
@@ -51,8 +51,8 @@ public class ExceptionAdvice {
     public ResponseEntity<Object> handleUnsupportedMediaType(HttpServletResponse response,
                                                              HttpMediaTypeException ex) {
         logger.error("", ex);
-        return new ResponseEntity<>(getErrorMessage(UNSUPPORTED_MEDIA_TYPE_ERROR),
-                createResponseHeaders(), HttpStatus.UNSUPPORTED_MEDIA_TYPE);
+        return new ResponseEntity<>(HttpStatus.UNSUPPORTED_MEDIA_TYPE, createResponseHeaders(),
+                HttpStatus.UNSUPPORTED_MEDIA_TYPE);
     }
 
     @ExceptionHandler(Exception.class)
@@ -61,8 +61,8 @@ public class ExceptionAdvice {
                                                             HttpServletResponse response,
                                                             Exception ex) {
         logger.error("", ex);
-        return new ResponseEntity<>(getErrorMessage(INTERNAL_SERVER_ERROR),
-                createResponseHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR, createResponseHeaders(),
+                HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     private HttpHeaders createResponseHeaders() {
