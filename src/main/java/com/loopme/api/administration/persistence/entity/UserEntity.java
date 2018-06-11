@@ -1,5 +1,6 @@
 package com.loopme.api.administration.persistence.entity;
 
+import com.loopme.api.administration.persistence.converter.UserRoleConverter;
 import com.loopme.api.administration.persistence.model.UserRole;
 import java.io.Serializable;
 import java.util.Set;
@@ -31,6 +32,7 @@ public class UserEntity
     @NotNull
     @Size(min = 6, max = 50)
     private String password;
+    @Convert(converter = UserRoleConverter.class)
     @Column
     @NotNull
     private UserRole role;

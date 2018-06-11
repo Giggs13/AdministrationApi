@@ -1,5 +1,6 @@
 package com.loopme.api.administration.persistence.entity;
 
+import com.loopme.api.administration.persistence.converter.ApplicationTypeConverter;
 import com.loopme.api.administration.persistence.model.ApplicationType;
 import com.loopme.api.administration.persistence.model.ContentType;
 import java.io.Serializable;
@@ -8,7 +9,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import lombok.Data;
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 
 @Data
 @Entity
@@ -25,11 +25,12 @@ public class ApplicationEntity
     @NotNull
     @Size(min = 7, max = 50)
     private String name;
+    @Convert(converter = ApplicationTypeConverter.class)
     @Column
     @NotNull
     private ApplicationType type;
     private Set<ContentType> contentTypes;
     @Column
     @NotNull
-    private User user;
+    private UserEntity user;
 }
