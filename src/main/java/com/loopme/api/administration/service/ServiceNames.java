@@ -7,7 +7,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum ServiceNames {
 
-    ADMIN_PARAMETER_SERVICE("adminParameterService");
+    APPLICATION_ENTITY_SERVICE("applicationEntityService"),
+    USER_ENTITY_SERVICE("userEntityService");
 
     private final String serviceName;
 }
