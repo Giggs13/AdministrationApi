@@ -10,5 +10,4 @@ public class ServletInitializer
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(AdministrationApiApplication.class);
     }
-
 }

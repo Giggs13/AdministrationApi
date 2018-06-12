@@ -12,14 +12,13 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "ApplicationDirectory")
+@Table(name = "application_directory")
 @Access(AccessType.FIELD)
 public class ApplicationEntity
         implements Serializable {
 
     @Id
-    @Column
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
     @NotNull
@@ -29,8 +28,8 @@ public class ApplicationEntity
     @Column
     @NotNull
     private ApplicationType type;
-    private Set<ContentType> contentTypes;
+    /*private Set<ContentType> contentTypes;
     @Column
     @NotNull
-    private UserEntity user;
+    private UserEntity user;*/
 }
